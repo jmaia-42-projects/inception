@@ -12,7 +12,10 @@ services:
     container_name: wordpress
     volumes:
       - wordpress-data:/srv
-      #  mariadb:
-      #    build: ./mariadb
+  mariadb:
+    build: ./mariadb
+    container_name: mariadb
+    ports:
+      - "3306:3306"
 volumes:
   wordpress-data:
