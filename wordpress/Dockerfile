@@ -1,6 +1,6 @@
 FROM alpine:3.16.2
 
-RUN apk update && apk add php-fpm bash 
+RUN apk update && apk add php-fpm php-mysqli bash 
 
 COPY root .
 
