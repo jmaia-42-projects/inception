@@ -6,16 +6,16 @@ services:
     ports:
       - "80:80"
     volumes:
-      - wordpress-data:/srv
+      - wordpress-files:/srv
   wordpress:
     build: ./wordpress
     container_name: wordpress
     volumes:
-      - wordpress-data:/srv
+      - wordpress-files:/srv
   mariadb:
     build: ./mariadb
     container_name: mariadb
     ports:
       - "3306:3306"
 volumes:
-  wordpress-data:
+  wordpress-files:
