@@ -2,12 +2,14 @@ version: "3"
 services:
   nginx:
     build: ./nginx
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
       - wordpress-data:/srv
   wordpress:
     build: ./wordpress
+    container_name: wordpress
     volumes:
       - wordpress-data:/srv
       #  mariadb:
