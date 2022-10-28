@@ -5,12 +5,14 @@ services:
     container_name: nginx
     ports:
       - "80:80"
+    restart: on-failure
     volumes:
       - wordpress-files:/srv
   wordpress:
     build: ./wordpress
     container_name: wordpress
     env_file: .env
+    restart: on-failure
     volumes:
       - wordpress-files:/srv
   mariadb:
@@ -18,6 +20,7 @@ services:
     container_name: mariadb
     ports:
       - "3306:3306"
+    restart: on-failure
     volumes:
       - wordpress-database:/var/lib/mysql/wordpress
 volumes:
