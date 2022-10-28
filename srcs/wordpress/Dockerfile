@@ -12,4 +12,4 @@ RUN		cd /srv \
 	&&	rmdir wordpress
 COPY root .
 
-CMD ["/usr/sbin/php-fpm8", "-F"]
+CMD ["/usr/sbin/php-fpm8", "-F", "--allow-to-run-as-root"]
