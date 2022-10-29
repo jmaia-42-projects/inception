@@ -18,6 +18,7 @@ services:
   mariadb:
     build: ./mariadb
     container_name: mariadb
+    env_file: .env
     ports:
       - "3306:3306"
     restart: on-failure
