@@ -3,14 +3,18 @@ services:
   nginx:
     build: ./nginx
     container_name: nginx
+    env_file: .env
     ports:
-      - "80:80"
+      - "443:443"
     restart: on-failure
     volumes:
       - wordpress-files:/srv
   wordpress:
     build: ./wordpress
     container_name: wordpress
+    depends_on:
+      mariadb:
+        condition: service_healthy
     env_file: .env
     restart: on-failure
     volumes:

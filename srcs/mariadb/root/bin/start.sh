@@ -5,7 +5,7 @@ wait_for_file_to_appear()
 	path=$1
 	file=$(basename $path)
 	folder=$(dirname $path)
-	while read cur_file; do if [ "$cur_file" = $file ]; then break; fi; done \
+	while read cur_file; do echo "LOOP !"; if [ "$cur_file" = $file ]; then echo "IN !"; break; fi; done \
 		< <(inotifywait -e create,open --format '%f' --quiet $folder --monitor)
 }
 
