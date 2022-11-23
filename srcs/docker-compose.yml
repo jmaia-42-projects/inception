@@ -23,8 +23,6 @@ services:
     build: ./mariadb
     container_name: mariadb
     env_file: .env
-    ports:
-      - "3306:3306"
     restart: on-failure
     volumes:
       - wordpress-database:/var/lib/mysql/wordpress
