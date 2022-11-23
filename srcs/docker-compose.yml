@@ -26,6 +26,10 @@ services:
     restart: on-failure
     volumes:
       - wordpress-database:/var/lib/mysql/wordpress
+  redis:
+    build: ./redis
+    container_name: redis
+    restart: on-failure
 volumes:
   wordpress-files:
   wordpress-database:
