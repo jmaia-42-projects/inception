@@ -1,7 +1,10 @@
 version: "3"
 services:
   nginx:
-    build: ./nginx
+    build:
+      context: nginx
+      args:
+        - DOMAIN_NAME=$DOMAIN_NAME
     container_name: nginx
     env_file: .env
     ports:
@@ -30,6 +33,18 @@ services:
     build: ./redis
     container_name: redis
     restart: on-failure
+  ftp:
+    build:
+      context: ftp
+      args:
+        - FTP_PASS=$FTP_PASS
+    container_name: ftp
+    env_file: .env
+    ports:
+      - "21:21"
+    restart: on-failure
+    volumes:
+      - wordpress-files:/home/wordpress/:777
 volumes:
   wordpress-files:
   wordpress-database:

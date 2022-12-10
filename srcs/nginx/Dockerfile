@@ -2,6 +2,8 @@ FROM alpine:3.17.0
 
 RUN apk update && apk add nginx openssl bash
 
+ARG DOMAIN_NAME
+
 RUN sed -i 's/TLSv1.1//' /etc/nginx/nginx.conf
 
 COPY root /
