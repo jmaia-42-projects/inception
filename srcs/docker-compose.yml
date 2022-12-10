@@ -41,6 +41,20 @@ services:
     networks:
       - my_amazing_network
     restart: on-failure
+  sshd:
+    build:
+      context: sshd
+      args:
+        - SSH_PASS=$SSH_PASS
+    container_name: sshd
+    env_file: .env
+    networks:
+      - my_amazing_network
+    restart: on-failure
+    ports:
+      - "2222:22"
+    volumes:
+      - wordpress-files:/home/wordpress/:777
   ftp:
     build:
       context: ftp
