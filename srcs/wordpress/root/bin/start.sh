@@ -1,4 +1,5 @@
 #!/bin/bash
+setfacl -R -m 'u:1000:rwx' /srv
 cd /srv/
 PAGER=cat wp-cli config create --dbname='wordpress' --dbuser="$MYSQL_USER" --dbpass="$MYSQL_PASSWORD" --dbhost='mariadb'
 PAGER=cat wp-cli core install --url="$DOMAIN_NAME" --title="$WEBSITE_TITLE" --admin_user="$WP_ADMIN_USER" --admin_password="$WP_ADMIN_PASS" --admin_email="$WP_ADMIN_MAIL" --skip-email

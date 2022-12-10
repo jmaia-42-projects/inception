@@ -7,6 +7,8 @@ services:
         - DOMAIN_NAME=$DOMAIN_NAME
     container_name: nginx
     env_file: .env
+    networks:
+      - my_amazing_network
     ports:
       - "443:443"
     restart: on-failure
@@ -19,6 +21,8 @@ services:
       mariadb:
         condition: service_healthy
     env_file: .env
+    networks:
+      - my_amazing_network
     restart: on-failure
     volumes:
       - wordpress-files:/srv
@@ -26,12 +30,16 @@ services:
     build: ./mariadb
     container_name: mariadb
     env_file: .env
+    networks:
+      - my_amazing_network
     restart: on-failure
     volumes:
       - wordpress-database:/var/lib/mysql/wordpress
   redis:
     build: ./redis
     container_name: redis
+    networks:
+      - my_amazing_network
     restart: on-failure
   ftp:
     build:
@@ -42,9 +50,14 @@ services:
     env_file: .env
     ports:
       - "21:21"
+    networks:
+      - my_amazing_network
     restart: on-failure
     volumes:
       - wordpress-files:/home/wordpress/:777
 volumes:
   wordpress-files:
   wordpress-database:
+
+networks:
+  my_amazing_network:
