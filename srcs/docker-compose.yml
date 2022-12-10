@@ -8,6 +8,7 @@ services:
     container_name: nginx
     depends_on:
       - wordpress
+      - adminer
     env_file: .env
     networks:
       - my_amazing_network
@@ -71,6 +72,12 @@ services:
     restart: on-failure
     volumes:
       - wordpress-files:/home/wordpress/:777
+  adminer:
+    build: ./adminer
+    container_name: adminer
+    networks:
+      - my_amazing_network
+    restart: on-failure
 volumes:
   wordpress-files:
   wordpress-database:
