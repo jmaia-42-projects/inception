@@ -7,4 +7,4 @@ PAGER=cat wp-cli user create "$WP_BASIC_USER" "$WP_BASIC_MAIL" --user_pass="$WP_
 PAGER=cat wp-cli config set WP_REDIS_HOST redis
 PAGER=cat wp-cli plugin install --activate redis-cache
 PAGER=cat wp-cli redis enable
-/usr/sbin/php-fpm8 -F --allow-to-run-as-root
+/usr/sbin/php-fpm81 -F --allow-to-run-as-root

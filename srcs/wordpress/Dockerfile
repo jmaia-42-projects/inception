@@ -1,6 +1,6 @@
-FROM alpine:3.16.2
+FROM alpine:3.17.0
 
-RUN apk update && apk add php-fpm php-mysqli php-phar php-mbstring php-tokenizer mysql-client bash
+RUN apk update && apk add php81-fpm php-mysqli php-phar php-mbstring php-tokenizer mysql-client bash
 
 ARG WORDPRESS_BASENAME="wordpress-6.0.3"
 ARG WORDPRESS_ARCHIVE="$WORDPRESS_BASENAME.tar.gz"
