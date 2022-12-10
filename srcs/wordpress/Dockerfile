@@ -4,7 +4,8 @@ RUN apk update && apk add php81-fpm php-mysqli php-phar php-mbstring php-tokeniz
 
 ARG WORDPRESS_BASENAME="wordpress-6.0.3"
 ARG WORDPRESS_ARCHIVE="$WORDPRESS_BASENAME.tar.gz"
-RUN		cd /srv \
+RUN		mkdir -p /srv/wordpress \
+	&&	cd /srv/wordpress \
 	&& 	wget https://wordpress.org/$WORDPRESS_ARCHIVE \
 	&&	tar xf $WORDPRESS_ARCHIVE \
 	&&	rm $WORDPRESS_ARCHIVE \

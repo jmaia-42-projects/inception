@@ -16,7 +16,7 @@ services:
       - "443:443"
     restart: on-failure
     volumes:
-      - wordpress-files:/srv
+      - wordpress-files:/srv/wordpress/
   wordpress:
     build: ./wordpress
     container_name: wordpress
@@ -28,7 +28,7 @@ services:
       - my_amazing_network
     restart: on-failure
     volumes:
-      - wordpress-files:/srv
+      - wordpress-files:/srv/wordpress/
   mariadb:
     build: ./mariadb
     container_name: mariadb
