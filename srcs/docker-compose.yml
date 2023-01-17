@@ -29,7 +29,7 @@ services:
       - my_amazing_network
     restart: on-failure
     volumes:
-      - wordpress-files:/srv/
+      - wordpress-files:/srv/wordpress
       - adminer-file:/srv/adminer
   mariadb:
     build: ./mariadb
@@ -81,7 +81,7 @@ services:
       - my_amazing_network
     restart: on-failure
     volumes:
-      - wordpress-files:/srv/adminer/
+      - adminer-file:/srv/
 volumes:
   wordpress-files:
   wordpress-database:
