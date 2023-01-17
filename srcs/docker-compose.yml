@@ -17,6 +17,7 @@ services:
     restart: on-failure
     volumes:
       - wordpress-files:/srv/wordpress/
+      - adminer-file:/srv/adminer/
   wordpress:
     build: ./wordpress
     container_name: wordpress
@@ -28,7 +29,8 @@ services:
       - my_amazing_network
     restart: on-failure
     volumes:
-      - wordpress-files:/srv/wordpress/
+      - wordpress-files:/srv/
+      - adminer-file:/srv/adminer
   mariadb:
     build: ./mariadb
     container_name: mariadb
@@ -79,10 +81,11 @@ services:
       - my_amazing_network
     restart: on-failure
     volumes:
-      - wordpress-files:/srv/
+      - wordpress-files:/srv/adminer/
 volumes:
   wordpress-files:
   wordpress-database:
+  adminer-file:
 
 networks:
   my_amazing_network:
